@@ -1,0 +1,6 @@
+# Ignore Image Folders #
+src
+dist
+
+# Ignore Node Modules #
+node_modules
