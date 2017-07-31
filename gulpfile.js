@@ -2,24 +2,14 @@ const gulp = require('gulp');
 const del = require('del');
 const imageMin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
+const runSequence = require('run-sequence');
 
-// clear the src folder
-gulp.task('clean:src', () => {
-    return del([
-        'src/**/*'
-    ]);
-});
+gulp.task('clean:src', () => del(['src/**/*']));
 
-gulp.task('clean:dist', () => {
-    return del([
-        'dist/**/*'
-    ]);
-});
-
-gulp.task('clean:all', ['clean:src', 'clean:dist']);
+gulp.task('clean:dist', () => del(['dist/**/*']));
 
 gulp.task('compress', () => {
-    gulp.src('./src/*')
+    return gulp.src('./src/*')
         .pipe(imageMin([
             imageMin.gifsicle({
                 interlaced: true
@@ -39,6 +29,6 @@ gulp.task('compress', () => {
         .pipe(gulp.dest('./dist'))
 });
 
-gulp.task('default', ['compress', 'clean:src'], () => {
-    console.log('Finished Image Compression Tasks 🔥');
+gulp.task('default', () => {
+    runSequence('clean:dist', 'compress', 'clean:src', () => console.log('Finished Image Compression Tasks 🔥'));
 });
