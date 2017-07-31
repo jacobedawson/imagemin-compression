@@ -2,5 +2,9 @@
 src
 dist
 
+# Ignore Scratch Files #
+scratch.html
+scratch.js
+
 # Ignore Node Modules #
 node_modules

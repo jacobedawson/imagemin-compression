@@ -1,14 +1,21 @@
 {
-  "name": "io-photos",
+  "name": "gulp-image-compression-tasks",
   "version": "1.0.0",
-  "description": "Image Minifying Task",
+  "description": "Image Minifying Tasks",
   "main": "index.js",
   "scripts": {
+    "src": "gulp clean:src",
+    "dist": "gulp clean:dist",
+    "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "del": "^3.0.0",
+    "gulp-imagemin": "^3.3.0",
     "imagemin": "^5.3.1",
     "imagemin-pngquant": "^5.0.1"
   }
